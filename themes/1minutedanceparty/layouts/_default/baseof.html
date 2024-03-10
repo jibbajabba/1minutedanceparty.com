@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+
+  {{/* Base Metadata */}}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+
+  {{/* Title */}}
+  <title itemprop="name">{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
+  <meta itemprop="name" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
+  <meta name="application-name" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}" />
+  <meta property="og:site_name" content="{{ .Site.Params.sitename }}" />
+
+  {{/* Description */}}
+  <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.Description }}{{ end }}{{ if .Params.summary }}{{.Title}}: {{ .Params.summary }}{{ end }}" />
+  <meta itemprop="description" content="{{ if .IsHome }}{{ .Site.Params.Description }}{{ end }}{{ if .Params.summary }}{{.Title}}: {{ .Params.summary }}{{ end }}" />
+  <meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.Description }}{{ end }}{{ if .Params.summary }}{{.Title}}: {{ .Params.summary }}{{ end }}" />
+  <meta name="twitter:description" content="{{ if .IsHome }}{{ .Site.Params.Description }}{{ end }}{{ if .Params.summary }}{{.Title}}: {{ .Params.summary }}{{ end }}" />
+
+  {{/* Links */}}
+  <base href="{{ .Permalink }}">
+  <link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
+  <meta name="url" content="{{ .Permalink }}" />
+  <meta name="twitter:url" content="{{ .Permalink }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+
+  {{/* Language */}}
+  <meta property="og:locale" content="{{ .Language.Lang }}">
+  <meta name="language" content="{{ .Language.LanguageName }}">
+
+  {{/* Image */}}
+  <meta itemprop="image" content="{{ .Site.Params.ogimage | absURL }}" />
+  <meta property="og:image" content="{{ .Site.Params.ogimage | absURL }}" />
+  <meta name="twitter:image" content="{{ .Site.Params.ogimage | absURL }}" />
+  <meta name="twitter:image:src" content="{{ .Site.Params.ogimage | absURL }}" />
+
+  {{/* Date */}}
+  <meta property="og:updated_time" content={{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ .Site.BaseURL }}sitemap.xml" />
+
+  {{ with .OutputFormats.Get "RSS" }}
+    <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+    <link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+  {{ end }}
+
+  {{/* Keywords*/}}
+  <meta name="keywords" content="{{ delimit .Keywords " , " }}">
+
+  {{/* Twitter */}}
+  <meta name="twitter:site" content="{{ .Site.Params.twitter }}">
+  <meta name="twitter:creator" content="{{ .Site.Params.twitter }}" />
+
+  {{/* Favicons */}}
+  <link rel="apple-touch-icon" sizes="57x57" href="/img/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/img/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/img/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/img/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/img/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/img/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/img/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/img/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/img/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="manifest" href="/img/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" type="image/png" href="/img/favicons/favicon.ico" />
+
+  {{/* Styles */}}
+  {{ $options := (dict "targetPath" "css/1minutedanceparty.css" "outputStyle" "compressed" "enableSourceMap" true "includePaths" (slice "node_modules/myscss")) }}
+  {{ $style := resources.Get "sass/1minutedanceparty.scss" | resources.ToCSS $options | fingerprint }}
+  
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+
+  {{/* Fonts */}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  
+  {{/* AlternativeOutputFormats */}}
+  {{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+
+  {{/* Crawlers */}}
+  <meta name="robots" content="index,follow" />
+  <meta name="googlebot" content="index,follow" />
+
+  {{/* Analytics */}}
+
+</head>
+
+<body class=" 1minutedanceparty-{{ .Kind }} {{ if .Section }} 1minutedanceparty-{{ .Section }}{{ end }} {{ if and (ne .Kind "home") (not .Section) }} 1minutedanceparty-{{ .Slug }}{{ end }}">
+
+{{/* BODY */}}
+<div id="body">
+{{/* MAIN */}}
+{{ block "main" . }}{{ end }}
+{{/* END BODY */}}
+</div>
+
+<script>
+ var searchIndexData = [];
+ // fetch on page load from the search index
+ let json_path = window.location.origin + '/index.json'
+
+ fetch(json_path).then(function (response) {
+     return response.json();
+ })
+ .then(function (data) {
+     searchIndexData = data;
+ })
+ .catch(function (err) {
+     console.log(err)
+ });
+ function sendToRandomArticle() {
+ let randIndex = Math.floor(Math.random() * searchIndexData.length);
+ let randArticle = searchIndexData[randIndex]['permalink'] + '?utm_source=RandomButton';
+ window.location.href = randArticle;
+ }
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+// BODY
+body {
+  background: #111;
+  color: $bodycolor;
+}
+
+// TRANSITION
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+

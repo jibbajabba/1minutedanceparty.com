@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="section hero">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-full">
+        <div class="playarea mb-0 ml-0 mr-0 p-0">
+          
+          <img src="/img/logo.png" id="logo" />
+          <img src="/img/boombox.png" id="playbutton" onclick="document.getElementById('audioPlayer').play();" />
+          
+          <audio id="audioPlayer" controls>
+              <source id="audioSource" src="" type="audio/mpeg">
+              Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+  </div>
+</section>
+<script>
+// Function to generate a random track
+function getRandomNumber() {
+    return Math.floor(Math.random() * 3) + 1;
+}
+// Function to update the audio source with a random number
+function updateAudioSource() {
+    var randomNumber = getRandomNumber();
+    var audioElement = document.getElementById('audioPlayer');
+    var audioSourceElement = document.getElementById('audioSource');
+    audioSourceElement.src = '/audio/' + randomNumber + '.mp3';
+    audioElement.load(); // Reload the audio element to apply the new source
+}
+// Call the updateAudioSource function when the page loads
+window.onload = function() {
+    updateAudioSource();
+};
+</script>
+{{ end }}

@@ -1,0 +1,55 @@
+title = "1minutedanceparty"
+baseurl = "https://1minutedanceparty/"
+theme = "1minutedanceparty"
+languageCode = "en-us"
+DefaultContentLanguage = "en"
+
+MetaDataFormat = "toml"
+pluralizeListTitles = false
+Paginate = "30"
+PageSize = "30"
+
+enableRobotsTXT = true
+canonifyURLs = false
+
+[params]
+author = "Michael Angeles"
+facebook = "https://www.facebook.com/michael.konigi.angeles/"
+ogimage = "/images/logo.png"
+sitename = "Konigi"
+twitter = "@konigi"
+description = "1 Minute Dance Party"
+
+[outputs]
+    home = ["html"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  status = "status"
+
+[markup.goldmark.renderer]
+  unsafe= true
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = true
+  disableSVG = false
+  disableXML = true
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.css]
+      decimals = -1
+      keepCSS2 = true
+    [minify.tdewolff.html]
+      keepConditionalComments = true
+      keepDefaultAttrVals = true
+      keepDocumentTags = true
+      keepEndTags = true
+      keepQuotes = false
+      keepWhitespace = false
+    [minify.tdewolff.js]
+    [minify.tdewolff.svg]
+      decimals = -1
