@@ -20,6 +20,7 @@ body {
     margin-top: 5vh;
     max-width: 35vw;
     max-height: 100vh;
+    animation: fadeIn 1s;
     @include breakpoint(sm) {
       margin-top: 50px;
       max-width: 90vw;
@@ -36,6 +37,10 @@ body {
   #playbutton {
     width: auto;
   }
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
   #audioPlayer {
     margin-top: -55px;
   }
@@ -46,6 +51,11 @@ body {
   audio::-webkit-media-controls-time-remaining-display {
       display: none;
   }
+}
+a#btnRefresh span {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: -2px;
 }
 a#btnRefresh:hover {
   text-decoration: underline;
