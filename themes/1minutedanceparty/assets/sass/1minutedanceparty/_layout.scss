@@ -20,6 +20,14 @@ body {
     margin-top: 0;
     max-width: 35vw;
     max-height: 100vh;
+    @include breakpoint(sm) {
+      margin-top: 50px;
+      max-width: 90vw;
+    }
+    @include breakpoint(md) {
+      margin-top: 10px;
+      max-width: 45vw;
+    }
   }
   #logo {
     width: auto;
