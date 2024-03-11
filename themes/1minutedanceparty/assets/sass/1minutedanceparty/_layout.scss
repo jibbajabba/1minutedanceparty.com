@@ -24,6 +24,7 @@ body {
     @include breakpoint(sm) {
       margin-top: 50px;
       max-width: 90vw;
+      margin-bottom: 50px;
     }
     @include breakpoint(md) {
       margin-top: 10px;
@@ -52,13 +53,37 @@ body {
       display: none;
   }
 }
+a#btnRefresh {
+  color: rgba(255,255,255,.25);
+  transition: all 0.3s ease-out;
+}
 a#btnRefresh span {
   font-weight: bold;
   font-size: 18px;
   margin-bottom: -2px;
 }
 a#btnRefresh:hover {
-  text-decoration: underline;
+  color: rgba(255,115,255,1);
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0,0,0,.2);
+  width: 100%;
+  font-size: 12px;
+  color: #bbb !important;
+  a {
+    color: #bbb !important;
+    text-decoration: underline;  
+    transition: all 0.3s ease-out;
+    &:hover {
+      color: rgba(255,115,255,1) !important;
+    }
+  }
+  @include breakpoint(sm) {
+    position: relative;
+    font-size: 11px;
+  }
 }
 // HR
 hr {

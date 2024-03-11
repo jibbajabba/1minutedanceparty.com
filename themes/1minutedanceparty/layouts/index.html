@@ -5,12 +5,12 @@
       <div class="column is-full">
         <div class="playarea mb-0 ml-0 mr-0 p-0">
           <img src="/img/logo.png" id="logo" />
-          <img src="/img/boombox.png" id="playbutton" onclick="document.getElementById('audioPlayer').play();" />
+          <a onclick="document.getElementById('audioPlayer').play();"><img src="/img/boombox.png" id="playbutton" /></a>
           <audio id="audioPlayer" controls controlsList="nodownload noplaybackrate">
               <source id="audioSource" src="" type="audio/mpeg">
               Your browser does not support the audio element.
           </audio>
-          <p class="has-text-centered"><a id="btnRefresh" class="is-size-7 has-text-white"><span>&#8634;</span> RELOAD TO GET A NEW TRACK</a></p>
+          <p class="has-text-centered"><a id="btnRefresh" class="is-size-7"><span>&#8634;</span> RELOAD TO GET A NEW TRACK</a></p>
         </div>
       </div>
   </div>
