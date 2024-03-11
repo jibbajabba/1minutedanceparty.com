@@ -15,8 +15,8 @@ canonifyURLs = false
 [params]
 author = "Michael Angeles"
 facebook = "https://www.facebook.com/michael.konigi.angeles/"
-ogimage = "/images/logo.png"
-sitename = "Konigi"
+ogimage = "/img/logo.png"
+sitename = "1 Minute Dance Party"
 twitter = "@konigi"
 description = "1 Minute Dance Party"
 
