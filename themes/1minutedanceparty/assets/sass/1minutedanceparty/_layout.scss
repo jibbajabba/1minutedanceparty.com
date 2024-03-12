@@ -23,12 +23,12 @@ body {
     animation: fadeIn 1s;
     text-align: center;
     @include breakpoint(sm) {
-      margin-top: 50px;
-      max-width: 90vw;
+      margin-top: 10vh;
+      max-width: 85vw;
       margin-bottom: 50px;
     }
     @include breakpoint(md) {
-      margin-top: 10px;
+      margin-top: 10vh;
       max-width: 45vw;
     }
   }
