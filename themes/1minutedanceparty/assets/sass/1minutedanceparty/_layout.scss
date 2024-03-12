@@ -21,6 +21,7 @@ body {
     max-width: 35vw;
     max-height: 100vh;
     animation: fadeIn 1s;
+    text-align: center;
     @include breakpoint(sm) {
       margin-top: 50px;
       max-width: 90vw;
@@ -34,9 +35,16 @@ body {
   #logo {
     width: auto;
     margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
   }
   #playbutton {
     width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   @keyframes fadeIn {
     0% { opacity: 0; }
